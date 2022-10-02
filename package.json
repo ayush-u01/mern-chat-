@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node back/server.js"
+    "start": "nodemon back/server.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/ayush-u01/mern-chat-#readme",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "express": "^4.18.1",
     "nodemon": "^2.0.20"
   }
