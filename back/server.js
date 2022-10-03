@@ -25,4 +25,25 @@ app.get('/api/chat/:id', (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, console.log(`server started on port ${PORT}`)); 
+const server = app.listen(PORT, console.log(`server started on port ${PORT}`)); 
+
+const io = require("socket.io")(server, {
+    pingTimeout: 60000,
+    cors: {
+        origin: "http://localhost:4000",
+    },
+});
+
+io.on("connection", (socket)=>{
+    console.log("connected to socket.io");
+
+    socket.on('setup', (userData) => {
+        socket.join(userData._id);
+        socket.emit('connected');
+    })
+
+
+
+
+})
+
