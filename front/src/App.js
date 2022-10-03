@@ -8,8 +8,8 @@ import Homepage from './pages/Homepage';
 function App() {
   return (
     <div className="App">
-        <Route path='/' component=<Homepage/> />
-        <Route path='/chats' component={ChatPage} />
+         <Route path='/' component={Homepage} exact />
+        <Route path='/chats' component={ChatPage} /> 
 
     </div>
   );

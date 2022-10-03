@@ -1,4 +1,4 @@
-import { Container, Box , Text, Tabs, TabList, TabPanels,  Tab} from '@chakra-ui/react';
+import { Container, TabPanel, Box , Text, Tabs, TabList, TabPanels,  Tab} from '@chakra-ui/react';
 import Login from '../components/Authentication/Login'
 import Signup from '../components/Authentication/Signup'
 // import React, { useEffect } from 'react'
@@ -30,18 +30,22 @@ const Homepage = () => {
         >
           <Text fontSize='4xl' fontFamily='Work sans' color='black'>Talk-A-Tive</Text>
         </Box>
-        <Box bg='white' w='100%' p={4} borderRadius='1g' color='balck' borderWidth='1px'></Box>
+
+        <Box bg='white' w='100%' p={4} borderRadius='1g' color='balck' borderWidth='1px'>
+
+        
         <Tabs variant ="soft-rounded" >
           <TabList mb='1em'>
             <Tab width='50%'>Login</Tab>
-            <Tab>Sign Up</Tab>
+            <Tab  width='50%'>Sign Up</Tab>
           </TabList>
           <TabPanels>
-              <Login/>
-              <Signup/>
+            <TabPanel><Login/></TabPanel>
+            <TabPanel><Signup/></TabPanel>
+              
           </TabPanels>
         </Tabs>
-      
+        </Box>
       </Container>
     </div>
   )
