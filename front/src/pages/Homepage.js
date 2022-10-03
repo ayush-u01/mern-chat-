@@ -7,7 +7,7 @@ const Homepage = () => {
   const history = useHistory();
 
   useEffect(()=>{
-    const user = JSON.parse(localstorage.getItem("userInfo"));
+    const user = JSON.parse(localStorage.getItem("userInfo"));
 
     if(user) history.push("/chats");
 
@@ -15,6 +15,7 @@ const Homepage = () => {
 
   return (
     <div>HomePage</div>
+  )
 }
 
 export default Homepage

@@ -1,18 +1,18 @@
-import React, {useEffect, useState} from "react";
-import io from 'socket.io-client';
+// import React, {useEffect, useState} from "react";
+// import io from 'socket.io-client';
 
 
 
-const ENDPOINT = "http://localhost:4000";
-var socket, selectedChatCompare;
+// const ENDPOINT = "http://localhost:4000";
+// var socket, selectedChatCompare;
 
 
-useEffect(()=> {
-    socket = io(ENDPOINT);
-    socket.emit("setup", user);
-    socket.on("connection", ()=> {
+// useEffect(()=> {
+//     socket = io(ENDPOINT);
+//     socket.emit("setup", user);
+//     socket.on("connection", ()=> {
 
-    })
-},[]);
+//     })
+// },[]);
 
 
