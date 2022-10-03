@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/ayush-u01/mern-chat-#readme",
   "dependencies": {
+    "colors": "^1.4.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "mongoose": "^6.6.3",
     "nodemon": "^2.0.20"
   }
 }

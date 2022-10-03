@@ -1,0 +1,85 @@
+1 - created express server, learnt about api, learnt about express, making api request in express - (get, post,patch, delete) , middlewares - tell express to parse json before data goes in post method - eg(app.use(express.json()) - convert body to json)
+traditionally http server was directly being used for handeling all request - using if/ else statement, hence express has very benefits
+
+worked with get/ post method to fetch data n post data,
+
+2 - created frontend - npm create-react-app, installed chakra ui , installed npm i react-router-dom [ <BrowserRouter> ] for supporting multiple pages, initialised 2 pages  - 1) login/signup(Homepage) ,  2) main chat page(ChatPage)
+ connected backend to frontend to fetch data from backend and to show on frontend - its necessary becoz - frontend running on PORT- 3000, backend- PORT-5000,
+so to connect go to package.json in frontend and add proxy- ""http://127.0.0.1:5000"" (backend address)
+
+installed axios - npm i axios, then played with api , fetching data through axios, - traditional alternative for axios - fetch api calls
+axios is lightweight package that is used to make http request in js lib like react, vue. 
+it makes it easy to send async http request to REST endpoints and perform crud operatons, its easier than fetch method in javascript 
+ adv: 1) it works in json format as default so no need for json parsing
+      2) make all type of http request (get, post, put, patch, delete)
+
+const fetchChats async () => {           ///   async keyword is imp here
+    const data = await axios.get('/api/data');
+    console.log(data);  / // data from fornt end will be shown in console
+}
+
+
+useEffect( () =>{
+    fetchChats();
+}, []) // - why do we added [] ??
+
+
+then we need to display data on frontend  - import and take help of use state, created a state for chats - then shown data on frontend
+
+
+const [Chats, setChats] = use state([]); // [] - becoz initial state is [] - empty, 
+
+.... // chat page component{ -- use rafce to generate 
+
+    const fetchChats async () => {           ///   async keyword is imp here
+        const {data} = await axios.get('/api/data'); // {data} - to get only data not add.. stuff
+        ///console.log(data);  / // data from fornt end will be shown in console
+        setChats(data);
+    }
+
+    useEffect( () =>{
+        fetchChats();
+    }, []) // - why do we added [] ??
+
+    return( // to write javascript in place of html in react - we use {} , eg - ` server running on  ${PORT} `,  hence added { } here
+        <div>
+        {
+            chats.map((chat) => ( // map chats to show chat name - 
+                <div key = {chat._id}>{chat.chatname}</div>    // json format data has field - chatname - key is imp - 
+                    // if you dont write key attribute - Warning: Each child in a list should have a unique "key" prop.
+            ))
+        }
+        </div>
+    )
+}
+
+then we moved again to backend - created mongoose schema / mongoose model - for user, message, chat, 
+    install - npm i mongoose
+    const chatModel = mongoose.Schema{
+        {           // for feilds - 
+            chatname : { type: String, trim : true }, - ( S capital - case sensitive)
+            isgroupchat : {type: Boolean, default: false},
+            users: [ // array of users - imported form user model
+                { type: mongoose.Schema.Types.Objectid,  ref: "User" } // taking ref from User model/ schema
+            ]
+            latestmsg: {type: mongoose.Schema.Types.Objectid, ref: "Message" } // imported from message model - hence type: mongoose.Schema.Types.Objectid
+            groupadmin : { type: mongoose.Schema.Types.Objectid, ref: "User" } // imported from user model 
+        },
+        { /// for timestamp 
+            timestamp: true
+        }   
+    } 
+
+    const chat = mongoose.model('chat', chatModel); // to create model and export as chat
+
+    module.export = chat;
+
+// similarly
+ messageModel - const messageModel = mongoose.Schema{ { sender - import from ref:"User" , hence type = mongoose.Schema.Types.Objectid , content {type: String, trim: true} , chat - imported from ref: "chat", hence type: mongoose.Schema.Types.Objectid } , {}}
+ userSchema - username, email, password pic - all String - not imported from any other
+
+
+mondo db - username - ayush, password - ayush
+
+
+
