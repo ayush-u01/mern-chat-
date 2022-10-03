@@ -1,0 +1,8 @@
+'Containers' in Chakra UI
+They help us to keep our app very responsive in different screen sizes
+
+'Box' in Chakra Ui works same as the 'div'
+
+
+
+
