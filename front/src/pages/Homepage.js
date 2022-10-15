@@ -28,7 +28,7 @@ const Homepage = () => {
         borderRadius = '1g'
         borderWidth= '1px'
         >
-          <Text fontSize='4xl' fontFamily='Work sans' color='black'>Talk-A-Tive</Text>
+          <Text m='0 0 0 170px' fontSize='4xl' fontFamily='Work sans' color='black'>Talk-A-Tive</Text>
         </Box>
 
         <Box bg='white' w='100%' p={4} borderRadius='1g' color='balck' borderWidth='1px'>
