@@ -1,9 +1,13 @@
 const express = require('express');
-const { registerUser, authUser } = require('../controller/userController');
+const { registerUser, authUser, allUsers } = require('../controller/userController');
+const { protect } = require('../middleware/authMiddleware');
 
 const router = express.Router();
 
-router.route('/').post(registerUser);
+router.route('/').post(registerUser).get(protect,allUsers);
 router.post('/login', authUser);
+
+// crete user searchng api
+// router.route('/').get(allUsers);
 
 module.exports = router; 
